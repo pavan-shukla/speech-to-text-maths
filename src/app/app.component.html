@@ -3,9 +3,24 @@
 <p class="ans-green">{{ correct ? 'Correct' : '' }}</p>
 <p class="ans-fail">{{ incorrect ? 'Try again' : '' }}</p>
 <div class="button-container">
-  
-  <button class="btn btn-primary" (click)="recognize()">Record</button>
+  <button class="btn btn-primary" (click)="recognize()">
+    <span class="material-symbols-outlined"> mic </span>
+    <span
+      style="
+      display: inline-block;
+      vertical-align: super;
+  "
+      >Record</span
+    >
+  </button>
   <button class="btn btn-primary generate" (click)="generateNumber()">
-    Next Number
+    <span
+      style="
+      display: inline-block;
+      vertical-align: super;
+  "
+      >Next Number</span
+    >
+    <span class="material-symbols-outlined"> arrow_forward_ios </span>
   </button>
 </div>
