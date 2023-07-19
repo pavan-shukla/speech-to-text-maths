@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    background-color: azure;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
+  background-color: #e8e8e8;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
 }

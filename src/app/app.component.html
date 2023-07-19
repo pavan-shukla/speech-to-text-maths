@@ -1,8 +1,9 @@
-<p [hidden]="!correct">{{ correct ? 'Correct' : '' }}</p>
-<p [hidden]="!incorrect">{{ incorrect ? 'Try again' : '' }}</p>
 <p class="help-text">Click on next number to generate number</p>
 <h1>{{ num }}</h1>
+<p class="ans-green">{{ correct ? 'Correct' : '' }}</p>
+<p class="ans-fail">{{ incorrect ? 'Try again' : '' }}</p>
 <div class="button-container">
+  
   <button class="btn btn-primary" (click)="recognize()">Record</button>
   <button class="btn btn-primary generate" (click)="generateNumber()">
     Next Number

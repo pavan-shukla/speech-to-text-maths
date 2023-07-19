@@ -2,7 +2,8 @@
   margin-left: 10%;
 }
 h1 {
-  font-size: 160px;
+  font-size: 200px;
+  margin-bottom: 15%;
 }
 .button-container {
   position: fixed;
@@ -11,5 +12,13 @@ h1 {
 }
 .help-text {
   margin: 24px;
-  font-size: 16px;
+  font-size: 24px;
+}
+.ans-green {
+  font-size: 48px;
+  color: #5cb85c;
+}
+.ans-fail {
+  font-size: 48px;
+  color: #d9534f;
 }
