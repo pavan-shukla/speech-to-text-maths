@@ -15,7 +15,7 @@ export class AppComponent {
   boo = false;
   speech: string = '';
   voice = '';
-  num: any = 'Click on next number to generate number';
+  num: any = '';
   correct = false;
   incorrect = false;
   ngOnInit() {}
