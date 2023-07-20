@@ -17,15 +17,14 @@ export class AppComponent {
   incorrect = false;
   locale = 'gu-IN';
   ngOnInit() {}
-  constructor(private _ngZone: NgZone) {
-   
-  }
+  constructor(private _ngZone: NgZone) {}
 
   getTranscript({
     locale = this.locale,
   }: { locale?: string } = {}): Observable<string> {
     return new Observable((observer) => {
-      const SpeechRecognition = window['webkitSpeechRecognition'];
+      const SpeechRecognition =
+        window['webkitSpeechRecognition'] || window['SpeechRecognition'];
       const speechRecognition = new SpeechRecognition();
       speechRecognition.continuous = true;
       speechRecognition.interimResults = true;

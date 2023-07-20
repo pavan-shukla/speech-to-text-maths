@@ -4,13 +4,13 @@
     <option value="en-US">English</option>
   </select>
 </div>
-<p class="help-text">{{ 'help-text' | translang:locale }}</p>
+<p class="help-text">{{ 'help-text' | translang: locale }}</p>
 <h1>{{ num | lang: locale }}</h1>
 <p class="ans-green">
-  {{ (correct ? 'correct' : '') | translang:locale }}
+  {{ (correct ? 'correct' : '') | translang: locale }}
 </p>
 <p class="ans-fail">
-  {{ (incorrect ? 'try-again' : '') | translang:locale }}
+  {{ (incorrect ? 'try-again' : '') | translang: locale }}
 </p>
 <div class="button-container">
   <button class="btn btn-primary" (click)="recognize()">
@@ -20,7 +20,7 @@
       display: inline-block;
       vertical-align: top;
   "
-      >{{ 'record' | translang:locale }}</span
+      >{{ 'record' | translang: locale }}</span
     >
   </button>
   <button class="btn btn-primary generate" (click)="generateNumber()">
@@ -29,7 +29,7 @@
       display: inline-block;
       vertical-align: top;
   "
-      >{{ 'next-number' | translang:locale }}</span
+      >{{ 'next-number' | translang: locale }}</span
     >
     <span class="material-symbols-outlined" style="font-size:16px">
       arrow_forward_ios
