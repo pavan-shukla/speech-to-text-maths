@@ -22,3 +22,7 @@ h1 {
   font-size: 48px;
   color: #d9534f;
 }
+.lang-container {
+  width: 100%;
+  text-align: right;
+}

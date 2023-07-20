@@ -1,0 +1,9 @@
+{
+  "app": {
+    "help-text": "Click on next number to generate number",
+    "next-number": "Next number",
+    "record": "Record",
+    "try-again": "Try again",
+    "correct": "Correct"
+  }
+}

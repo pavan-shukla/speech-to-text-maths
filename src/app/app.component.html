@@ -1,7 +1,13 @@
-<p class="help-text">Click on next number to generate number</p>
-<h1>{{ num }}</h1>
-<p class="ans-green">{{ correct ? 'Correct' : '' }}</p>
-<p class="ans-fail">{{ incorrect ? 'Try again' : '' }}</p>
+<div class="lang-container">
+  <select class="right" [(ngModel)]="locale" (change)="useLanguage()">
+    <option value="gu-IN">ગુજરાતી</option>
+    <option value="en-US">English</option>
+  </select>
+</div>
+<p class="help-text">{{ 'app.help-text' | translate }}</p>
+<h1>{{ num | lang: locale }}</h1>
+<p class="ans-green">{{ (correct ? 'app.correct' : '') | translate }}</p>
+<p class="ans-fail">{{ (incorrect ? 'app.try-again' : '') | translate }}</p>
 <div class="button-container">
   <button class="btn btn-primary" (click)="recognize()">
     <span class="material-symbols-outlined" style="font-size:16px"> mic </span>
@@ -10,7 +16,7 @@
       display: inline-block;
       vertical-align: top;
   "
-      >Record</span
+      >{{ 'app.record' | translate }}</span
     >
   </button>
   <button class="btn btn-primary generate" (click)="generateNumber()">
@@ -19,7 +25,7 @@
       display: inline-block;
       vertical-align: top;
   "
-      >Next Number</span
+      >{{ 'app.next-number' | translate }}</span
     >
     <span class="material-symbols-outlined" style="font-size:16px">
       arrow_forward_ios
