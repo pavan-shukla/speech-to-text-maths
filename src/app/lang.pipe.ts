@@ -5,12 +5,18 @@ export class LangPipe implements PipeTransform {
   transform(n: number, loc): string {
     if (loc === 'gu-IN') {
       return this.translateNumerals(n, 'gujarati');
+    } else if (loc === 'ta-IN') {
+      return this.translateNumerals(n, 'tamil');
+    } else if (loc === 'te-IN') {
+      return this.translateNumerals(n, 'telugu');
+    } else if (loc === 'hi-IN') {
+      return this.translateNumerals(n, 'devanagari');
     }
     return n + '';
   }
 
   translateNumerals(input, target) {
-    const systems = {
+    var systems = {
         devanagari: 2406,
         tamil: 3046,
         kannada: 3302,
@@ -26,11 +32,10 @@ export class LangPipe implements PipeTransform {
       nine = 57, // char code for Arabic nine
       offset = (systems[target.toLowerCase()] || zero) - zero,
       output = input.toString().split(''),
-      i,
       l = output.length,
       cc;
 
-    for (i = 0; i < l; i++) {
+    for (let i = 0; i < l; i++) {
       cc = output[i].charCodeAt(0);
       if (cc >= zero && cc <= nine) {
         output[i] = String.fromCharCode(cc + offset);
