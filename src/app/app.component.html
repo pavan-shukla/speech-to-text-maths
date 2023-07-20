@@ -1,13 +1,17 @@
 <div class="lang-container">
-  <select class="right" [(ngModel)]="locale" (change)="useLanguage()">
+  <select class="right" [(ngModel)]="locale">
     <option value="gu-IN">ગુજરાતી</option>
     <option value="en-US">English</option>
   </select>
 </div>
-<p class="help-text">{{ 'app.help-text' | translate }}</p>
+<p class="help-text">{{ 'help-text' | translang:locale }}</p>
 <h1>{{ num | lang: locale }}</h1>
-<p class="ans-green">{{ (correct ? 'app.correct' : '') | translate }}</p>
-<p class="ans-fail">{{ (incorrect ? 'app.try-again' : '') | translate }}</p>
+<p class="ans-green">
+  {{ (correct ? 'correct' : '') | translang:locale }}
+</p>
+<p class="ans-fail">
+  {{ (incorrect ? 'try-again' : '') | translang:locale }}
+</p>
 <div class="button-container">
   <button class="btn btn-primary" (click)="recognize()">
     <span class="material-symbols-outlined" style="font-size:16px"> mic </span>
@@ -16,7 +20,7 @@
       display: inline-block;
       vertical-align: top;
   "
-      >{{ 'app.record' | translate }}</span
+      >{{ 'record' | translang:locale }}</span
     >
   </button>
   <button class="btn btn-primary generate" (click)="generateNumber()">
@@ -25,7 +29,7 @@
       display: inline-block;
       vertical-align: top;
   "
-      >{{ 'app.next-number' | translate }}</span
+      >{{ 'next-number' | translang:locale }}</span
     >
     <span class="material-symbols-outlined" style="font-size:16px">
       arrow_forward_ios

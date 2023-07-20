@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
-import { OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Scavenger } from '@wishtack/rx-scavenger';
-import { debounceTime, switchMap } from 'rxjs/operators';
+
 import { NgZone } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'wt-app',
@@ -21,12 +17,8 @@ export class AppComponent {
   incorrect = false;
   locale = 'gu-IN';
   ngOnInit() {}
-  constructor(private _ngZone: NgZone, private translate: TranslateService) {
-    translate.setDefaultLang(this.locale);
-  }
-
-  useLanguage() {
-    this.translate.use(this.locale);
+  constructor(private _ngZone: NgZone) {
+   
   }
 
   getTranscript({
