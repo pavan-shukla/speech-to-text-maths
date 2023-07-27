@@ -138,7 +138,9 @@ export class AppComponent {
     this.incorrect = false;
 
     this.generateNums();
-    gtag('event', 'Generate_Number | ' + this.mathType);
+    try {
+      gtag('event', 'Generate_Number | ' + this.mathType);
+    } catch (e) {}
   }
 
   generateNums() {
