@@ -138,10 +138,7 @@ export class AppComponent {
     this.incorrect = false;
 
     this.generateNums();
-    gtag('event', 'generateNumber', {
-      app_name: 'maths',
-      screen_name: `${this.mathType}: ${this.num1},${this.num2}`,
-    });
+    gtag('event', 'Generate_Number | ' + this.mathType);
   }
 
   generateNums() {
