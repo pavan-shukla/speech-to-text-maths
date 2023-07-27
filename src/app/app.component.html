@@ -1,4 +1,12 @@
 <div class="lang-container">
+  <select class="left" [(ngModel)]="mathType" (change)="generateNumber()">
+    <option value="numbers">નંબર ઓળખ</option>
+    <option value="addition">સરવાણો</option>
+    <option value="additionSingleD">સરળ સરવાણો</option>
+    <option value="subtraction">બાદબાકી</option>
+    <option value="subtractionSingleD">સરળ બાદબાકી</option>
+    <option value="multiplication">ઘડિયા</option>
+  </select>
   <select class="right" [(ngModel)]="locale">
     <option value="gu-IN">ગુજરાતી</option>
     <option value="en-US">English</option>
@@ -8,7 +16,23 @@
   </select>
 </div>
 <p class="help-text">{{ 'help-text' | translang: locale }}</p>
-<h1>{{ num | lang: locale }}</h1>
+<h1 [attr.class]="mathType">
+  <ng-container *ngIf="mathType === 'numbers'">
+    {{ num1 | lang: locale }}
+  </ng-container>
+  <ng-container *ngIf="mathType !== 'numbers'">
+    {{ num1 | lang: locale }}
+    <div *ngIf="mathType === 'addition' || mathType === 'additionSingleD'">
+      + {{ num2 | lang: locale }}
+    </div>
+    <div
+      *ngIf="mathType === 'subtraction' || mathType === 'subtractionSingleD'"
+    >
+      - {{ num2 | lang: locale }}
+    </div>
+    <div *ngIf="mathType === 'multiplication'">x {{ num2 | lang: locale }}</div>
+  </ng-container>
+</h1>
 <p class="ans-green">
   {{ (correct ? 'correct' : '') | translang: locale }}
 </p>

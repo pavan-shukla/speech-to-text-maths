@@ -2,8 +2,11 @@
   margin-left: 10%;
 }
 h1 {
-  font-size: 200px;
+  font-size: 140px;
   margin-bottom: 15%;
+}
+h1.numbers {
+  font-size: 200px;
 }
 .button-container {
   position: fixed;
@@ -12,7 +15,7 @@ h1 {
 }
 .help-text {
   margin: 24px;
-  font-size: 24px;
+  font-size: 16px;
 }
 .ans-green {
   font-size: 48px;
@@ -24,5 +27,8 @@ h1 {
 }
 .lang-container {
   width: 100%;
-  text-align: right;
+  text-align: left;
+}
+.right {
+  float: right;
 }

@@ -1,16 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 const EN = {
-  'help-text': 'Click on next number to generate number',
-  'next-number': 'Next number',
+  'help-text': 'Click on next number to generate number and click on record to call the number',
+  'next-number': 'Next',
   record: 'Record',
   'try-again': 'Try again',
   correct: 'Correct',
 };
 
 const GU = {
-  'help-text': 'નંબર જનરેટ કરવા માટે આગામી નંબર પર ક્લિક કરો',
-  'next-number': 'આગામી નંબર',
+  'help-text': 'નંબર જનરેટ કરવા માટે આગળ પર ક્લિક કરો અને રેકોર્ડ પર ક્લિક કરી નંબર બોલો',
+  'next-number': 'આગળ',
   record: 'રેકોર્ડ',
   'try-again': 'ફરીથી પ્રયત્ન કરો',
   correct: 'સાચું',

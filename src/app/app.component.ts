@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NgZone } from '@angular/core';
 import { Observable } from 'rxjs';
 
+declare let gtag: Function;
+
 @Component({
   selector: 'wt-app',
   templateUrl: './app.component.html',
@@ -12,10 +14,12 @@ export class AppComponent {
   boo = false;
   speech: string = '';
   voice = '';
-  num: any = '';
+  num1: any = '';
+  num2: any = '';
   correct = false;
   incorrect = false;
   locale = 'gu-IN';
+  mathType = 'numbers';
   ngOnInit() {}
   constructor(private _ngZone: NgZone) {}
 
@@ -63,17 +67,68 @@ export class AppComponent {
       } else {
         this.speech = transcript;
       }
-      if (
-        this.speech.indexOf(this.num + '') !== -1 ||
-        this.voice.indexOf(this.num + '') !== -1
-      ) {
-        this.correct = true;
-        this.incorrect = false;
-      } else {
-        this.correct = false;
-        this.incorrect = true;
-      }
+      this.validate();
     });
+  }
+
+  validate() {
+    switch (this.mathType) {
+      case 'additionSingleD':
+      case 'addition': {
+        if (
+          this.speech.indexOf(this.num1 + this.num2 + '') !== -1 ||
+          this.voice.indexOf(this.num1 + this.num2 + '') !== -1
+        ) {
+          this.correct = true;
+          this.incorrect = false;
+        } else {
+          this.correct = false;
+          this.incorrect = true;
+        }
+        break;
+      }
+      case 'subtractionSingleD':
+      case 'subtraction': {
+        if (
+          this.speech.indexOf(this.num1 - this.num2 + '') !== -1 ||
+          this.voice.indexOf(this.num1 - this.num2 + '') !== -1
+        ) {
+          this.correct = true;
+          this.incorrect = false;
+        } else {
+          this.correct = false;
+          this.incorrect = true;
+        }
+        break;
+      }
+      case 'multiplication': {
+        if (
+          this.speech.indexOf(this.num1 * this.num2 + '') !== -1 ||
+          this.voice.indexOf(this.num1 * this.num2 + '') !== -1
+        ) {
+          this.correct = true;
+          this.incorrect = false;
+        } else {
+          this.correct = false;
+          this.incorrect = true;
+        }
+        break;
+      }
+      case 'numbers':
+      default: {
+        if (
+          this.speech.indexOf(this.num1 + '') !== -1 ||
+          this.voice.indexOf(this.num1 + '') !== -1
+        ) {
+          this.correct = true;
+          this.incorrect = false;
+        } else {
+          this.correct = false;
+          this.incorrect = true;
+        }
+        break;
+      }
+    }
   }
 
   generateNumber() {
@@ -81,7 +136,43 @@ export class AppComponent {
     this.voice = '';
     this.correct = false;
     this.incorrect = false;
-    this.num = this.generateRandomInteger(10, 100);
+
+    this.generateNums();
+    gtag('event', 'generateNumber', {
+      app_name: 'maths',
+      screen_name: `${this.mathType}: ${this.num1},${this.num2}`,
+    });
+  }
+
+  generateNums() {
+    switch (this.mathType) {
+      case 'addition': {
+        this.num1 = this.generateRandomInteger(10, 100);
+        this.num2 = this.generateRandomInteger(0, 99);
+        break;
+      }
+      case 'subtraction': {
+        this.num1 = this.generateRandomInteger(10, 100);
+        this.num2 = this.generateRandomInteger(0, this.num1);
+        break;
+      }
+      case 'subtractionSingleD':
+      case 'additionSingleD': {
+        this.num1 = this.generateRandomInteger(10, 100);
+        this.num2 = this.generateRandomInteger(1, 10);
+        break;
+      }
+      case 'multiplication': {
+        this.num1 = this.generateRandomInteger(1, 10);
+        this.num2 = this.generateRandomInteger(1, 10);
+        break;
+      }
+      case 'numbers':
+      default: {
+        this.num1 = this.generateRandomInteger(10, 100);
+        break;
+      }
+    }
   }
 
   generateRandomInteger(min, max) {
